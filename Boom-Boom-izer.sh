@@ -35,10 +35,8 @@ fi
 # Prefill with ONE Video
 youtube-dl --prefer-free-formats --audio-format best --format mp4 --output /home/pi/Potty-Boom-Boom/Files/01_Pausenmusik https://www.youtube.com/watch?v=C23E5grsczE 
 
-# Setting volume
-amixer -D pulse sset Master 80%
-
 # END
 echo "03 - Profit (Potty-Boom-Boom should Boom Boom after compatible files are placed in the correct folder and a reboot)"
+echo "DON'T FORGET TO SET A PROPER VOLUME USING ALSAMIXER"
 
 exit 0
