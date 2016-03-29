@@ -8,7 +8,7 @@ echo "##########################"
 echo "01 - Installing Packages we need"
 
 # Package installations
-apt update && apt -y install omxplayer i3 lightdm
+apt update && apt -y install omxplayer i3 lightdm youtube-dl
 if [ $? -ne 0 ] ; then
 	echo " - BOOM - There was a Boom Boom problem with Boom Boom package installation."
 	echo " - BOOM - Do you have an Network/Internet connection?"
@@ -31,6 +31,9 @@ if [ ${copies} -lt 3 ] ; then
 	echo " - BOOM - Maybe the guy who Boom Boom wrote the script had to less Boom Boom sleep"
 	exit 42
 fi
+
+# Prefill with ONE Video
+youtube-dl --prefer-free-formats --audio-format best --format mp4 --output /home/pi/Potty-Boom-Boom/Files/01_Pausenmusik https://www.youtube.com/watch?v=C23E5grsczE 
 
 # END
 echo "03 - Profit (Potty-Boom-Boom should Boom Boom after compatible files are placed in the correct folder and a reboot)
