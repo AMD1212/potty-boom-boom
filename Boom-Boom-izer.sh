@@ -18,12 +18,12 @@ fi
 
 # Adopting the configs
 echo "02 - Changing some configs"
-cp /tmp/potty-boom-boom/potty-lightdm.conf /etc/lightdm/lightdm.conf && copies=$((copies + 1 )) && echo " - Installed lightdm.conf for pi-autologin"
-mkdir /home/pi/.i3
-cp /tmp/potty-boom-boom/potty-i3.conf /home/pi/.i3/config && copies=$((copies + 1 )) && echo " - Installed i3 config, starts the watchdog"
+cp -f /tmp/potty-boom-boom/potty-lightdm.conf /etc/lightdm/lightdm.conf && copies=$((copies + 1 )) && echo " - Installed lightdm.conf for pi-autologin"
+mkdir -p /home/pi/.i3
+cp -f /tmp/potty-boom-boom/potty-i3.conf /home/pi/.i3/config && copies=$((copies + 1 )) && echo " - Installed i3 config, starts the watchdog"
 mkdir -p /home/pi/Potty-Boom-Boom/Files
 chown -R pi:pi /home/pi/Potty-Boom-Boom
-cp /tmp/potty-boom-boom/Potty-Boom-Boom-watchdog.sh /home/pi/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && copies=$((copies + 1 )) && echo " - Installed the watchdog, looks for videos and takes a random one for the player"
+cp -f /tmp/potty-boom-boom/Potty-Boom-Boom-watchdog.sh /home/pi/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && copies=$((copies + 1 )) && echo " - Installed the watchdog, looks for videos and takes a random one for the player"
 chmod +x /home/pi/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && echo " - Watchdog is now executeable"
 
 if [ ${copies} -lt 3 ] ; then
@@ -35,6 +35,10 @@ fi
 # Prefill with ONE Video
 youtube-dl --prefer-free-formats --audio-format best --format mp4 --output /home/pi/Potty-Boom-Boom/Files/01_Pausenmusik https://www.youtube.com/watch?v=C23E5grsczE 
 
+# Setting volume
+amixer -D pulse sset Master 80%
+
 # END
-echo "03 - Profit (Potty-Boom-Boom should Boom Boom after compatible files are placed in the correct folder and a reboot)
+echo "03 - Profit (Potty-Boom-Boom should Boom Boom after compatible files are placed in the correct folder and a reboot)"
+
 exit 0
