@@ -3,15 +3,15 @@ An raspian based Toilet-media-center used at EH16 to entertain and speed up toil
 
 HOWTO:
  - Deploy Raspian-Lite[1] on a SD Card of your joice (If the Potty-Boom-Boom is used without network and remote-storage choose a big SD-Card 8GB+) 
+ - Run raspi-config and choose the menupoint to extend the root-filesystem and reboot the system (Important, otherwise space will be filled up during install)
  - Start your new Potty-Boom-Boom device and connect to it.
  - Install git, checkout the Boom-Boom-izer.sh and execute it.
 ```
-sudo apt update && apt -y install git
+sudo apt update && sudo apt -y install git
 git clone https://github.com/AMD1212/potty-boom-boom.git /tmp/potty-boom-boom
 sudo sh /tmp/potty-boom-boom/Boom-Boom-izer.sh
 ```
  - Place your mp4 encoded videos in the /home/pi/Potty-Boom-Boom/Files/
- - Run raspi-config and choose the menupoint to extend the root-filesystem and reboot the system
  - Boom Boom!
 
 
