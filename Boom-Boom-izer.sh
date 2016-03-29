@@ -23,8 +23,8 @@ mkdir /home/pi/.i3
 cp /tmp/potty-boom-boom/potty-i3.conf /home/pi/.i3/config && ((copies=${copies}+1)) && echo " - Installed i3 config, starts the watchdog"
 mkdir -p /home/pi/Potty-Boom-Boom/Files
 chown -R pi:pi /home/pi/Potty-Boom-Boom
-cp /tmp/potty-boom-boom/Potty-Boom-Boom-watchdog.sh /home/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && ((copies=${copies}+1)) && echo " - Installed the watchdog, looks for videos and takes a random one for the player"
-chmod +x /home/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && echo " - Watchdog is now executeable"
+cp /tmp/potty-boom-boom/Potty-Boom-Boom-watchdog.sh /home/pi/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && ((copies=${copies}+1)) && echo " - Installed the watchdog, looks for videos and takes a random one for the player"
+chmod +x /home/pi/Potty-Boom-Boom/Potty-Boom-Boom-watchdog.sh && echo " - Watchdog is now executeable"
 
 if [ ${copies} -lt 3 ] ; then
 	echo " - BOOM - There was a problem with Boom Boom copying Boom files"
