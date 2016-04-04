@@ -1,5 +1,5 @@
 # Potty-Boom-Boom
-An raspian based Toilet-media-center used at EH16 to entertain and speed up toilet usage
+A raspian based Toilet-media-center used at EH16 to entertain and speed up toilet usage
 
 HOWTO:
  - Deploy Raspian-Lite[1] on a SD Card of your joice (If the Potty-Boom-Boom is used without network and remote-storage choose a big SD-Card 8GB+) 
