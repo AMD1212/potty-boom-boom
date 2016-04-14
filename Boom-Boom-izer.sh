@@ -1,5 +1,23 @@
 #!/bin/bash
 ##################################
+
+## STAGE 1: change base config
+if [[ "`hostname`" == "raspberrypi" ]]; then
+
+	whiptail --title "Potty Boom Boom is dangerous!" \
+	--yesno "This would install Potty Boom Boom - and several reboots will be necessary! Proceed?" 8 78 \
+	|| exit
+	HOSTNAME=$(whiptail --title "Mandatory hostname" \
+		--inputbox "How should this Potty be called?" \
+		8 78 "pottyboomer" \
+	3>&1 1>&2 2>&3)
+	sudo /usr/bin/raspi-config nonint do_change_hostname "$HOSTNAME"
+	sudo /usr/bin/raspi-config nonint do_expand_rootfs
+	sudo /usr/bin/raspi-config nonint do_memory_split 64
+	sudo reboot
+fi
+
+## STAGE 2: original install
 # Vars
 copies=0
 
