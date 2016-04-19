@@ -4,6 +4,7 @@
 
 DEFPLAYLIST="https://www.youtube.com/playlist?list=PL_K5oM8g3x84_JuMJhWpJvOKmjaay1inl"
 
+export LC_ALL=C
 cd `dirname $(realpath "$0")`
 
 ## STAGE 1: change base config
