@@ -1,19 +1,27 @@
 #!/bin/bash
-##################################
+
+## DEFINITIONS
+
+DEFPLAYLIST="https://www.youtube.com/playlist?list=PL_K5oM8g3x84_JuMJhWpJvOKmjaay1inl"
+
+cd `dirname $(realpath "$0")`
 
 ## STAGE 1: change base config
-if [[ "`hostname`" == "raspberrypi" ]]; then
+
+if [[ ! -e PLAYLIST ]]; then
 
 	whiptail --title "Potty Boom Boom is dangerous!" \
 	--yesno "This would install Potty Boom Boom - and several reboots will be necessary! Proceed?" 8 78 \
 	|| exit
-	HOSTNAME=$(whiptail --title "Mandatory hostname" \
-		--inputbox "How should this Potty be called?" \
-		8 78 "pottyboomer" \
-	3>&1 1>&2 2>&3)
-	sudo /usr/bin/raspi-config nonint do_change_hostname "$HOSTNAME"
+	PLAYLIST=$(whiptail --title "Default Playlist" \
+		--inputbox "\
+Your servile boomer could install a first playlist. What list should \
+that be? (cancel for none)" \
+		8 78 "$DEFPLAYLIST" \
+	3>&1 1>&2 2>&3 || echo "")
 	sudo /usr/bin/raspi-config nonint do_expand_rootfs
 	sudo /usr/bin/raspi-config nonint do_memory_split 64
+	echo $PLAYLIST > PLAYLIST # trigger second stage upon reboot
 	sudo reboot
 fi
 
