@@ -23,6 +23,25 @@ that be? (cancel for none)" \
 	sudo /usr/bin/raspi-config nonint do_expand_rootfs
 	sudo /usr/bin/raspi-config nonint do_memory_split 64
 	echo $PLAYLIST > PLAYLIST # trigger second stage upon reboot
+
+	sudo tee /etc/systemd/system/potty-boom-install.service >/dev/null <<EOF
+[Unit]
+Description=Potty Boom Boom - second stage install
+After=getty@tty2.service
+
+[Service]
+Type=oneshot
+ExecStart=`realpath $0`
+StandardInput=tty
+TTYPath=/dev/tty2
+TTYReset=yes
+TTYVHangup=yes
+
+[Install]
+WantedBy=default.target
+EOF
+	sudo systemctl enable potty-boom-install
+
 	sudo reboot
 	exit
 fi
