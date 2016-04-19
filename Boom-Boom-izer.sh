@@ -24,6 +24,7 @@ that be? (cancel for none)" \
 	sudo /usr/bin/raspi-config nonint do_memory_split 64
 	echo $PLAYLIST > PLAYLIST # trigger second stage upon reboot
 	sudo reboot
+	exit
 fi
 
 ## STAGE 2: original install
